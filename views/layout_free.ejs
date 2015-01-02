@@ -33,13 +33,10 @@
     <![endif]-->
   </head>
 
-  <body class="page-body <% if (typeof classpage != "undefined" && typeof classpage[0] != "undefined") { %><%- classpage[0] %><% } %>" data-url="http://neon.dev">
-
-    <div class="<% if (typeof classpage != "undefined" && typeof classpage[1] != "undefined") { %><%- classpage[1] %><% } else { %><%- 'page-container' %><% } %>">
+  <body class="page-body <% if (typeof classpage != "undefined" && typeof classpage[0] != "undefined") { %><%- classpage[0] %><% } %>">
 
       <%- body %>
 
-    </div>
     <!--SCRIPTS-->
     <script src="/js/socket.io-1.2.1.js"></script>
     <script src="/js/gsap/main-gsap.js"></script>

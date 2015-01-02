@@ -34,7 +34,6 @@ module.exports.routes = {
 
   '/': 'SiteController.main',
   'get /login': 'AuthController.login',
-  'get /process': 'AuthController.process',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
 

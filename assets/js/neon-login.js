@@ -24,7 +24,7 @@ var neonLogin = neonLogin || {};
 				
 				password: {
 					required: true
-				},
+				}
 				
 			},
 			
@@ -61,12 +61,12 @@ var neonLogin = neonLogin || {};
 											
 					// Send data to the server
 					$.ajax({
-						url: baseurl + 'data/sample-login-form.php',
+						url: '/auth/local',
 						method: 'POST',
 						dataType: 'json',
 						data: {
-							username: $("input#username").val(),
-							password: $("input#password").val(),
+							identifier: $("input#username").val(),
+							password: $("input#password").val()
 						},
 						error: function()
 						{
@@ -96,7 +96,7 @@ var neonLogin = neonLogin || {};
 									// Redirect to login page
 									setTimeout(function()
 									{
-										var redirect_url = baseurl;
+										var redirect_url = "/";
 										
 										if(response.redirect_url && response.redirect_url.length)
 										{
@@ -132,7 +132,7 @@ var neonLogin = neonLogin || {};
 				
 					password: {
 						required: true
-					},
+					}
 					
 				},
 				
@@ -354,7 +354,7 @@ var neonLogin = neonLogin || {};
 			
 			// Create Progress Circle
 			var bg = neonLogin.lockscreen_progress_canvas,
-				ctx = ctx = bg.getContext('2d'),
+				ctx = bg.getContext('2d'),
 				imd = null,
 				circ = Math.PI * 2,
 				quart = Math.PI / 2,

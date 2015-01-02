@@ -24,7 +24,8 @@ var validator = require('validator');
  */
 exports.register = function (req, res, next) {
   var email    = req.param('email')
-    , username = req.param('username')
+    , name = req.param('name')
+    , phone = req.param('phone')
     , password = req.param('password');
 
   if (!email) {
@@ -32,8 +33,13 @@ exports.register = function (req, res, next) {
     return next(new Error('No email was entered.'));
   }
 
-  if (!username) {
+  if (!name) {
     req.flash('error', 'Error.Passport.Username.Missing');
+    return next(new Error('No username was entered.'));
+  }
+
+  if (!phone) {
+    req.flash('error', 'Error.Passport.Phone.Missing');
     return next(new Error('No username was entered.'));
   }
 
@@ -43,7 +49,8 @@ exports.register = function (req, res, next) {
   }
 
   User.create({
-    username : username
+    name : name
+  , phone : phone
   , email    : email
   }, function (err, user) {
     if (err) {

@@ -68,7 +68,7 @@ var neonRegister = neonRegister || {};
 					{
 						// Send data to the server
 						$.ajax({
-							url: baseurl + 'data/sample-register-form.php',
+							url: '/auth/local/register',
 							method: 'POST',
 							dataType: 'json',
 							data: {
@@ -90,8 +90,7 @@ var neonRegister = neonRegister || {};
 									phone = response.submitted_data.phone,
 									birthdate = response.submitted_data.birthdate,
 									username = response.submitted_data.username,
-									email = response.submitted_data.email,
-									password = response.submitted_data.password;
+									email = response.submitted_data.email;
 								
 								
 								// Form is fully completed, we update the percentage
