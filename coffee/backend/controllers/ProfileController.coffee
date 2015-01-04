@@ -17,6 +17,9 @@ PanelController =
         "js/neon-chat.js"
       ]
     return
+  save: (req, res) ->
+    return 1
+
 
 
 

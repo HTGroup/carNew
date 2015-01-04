@@ -55,6 +55,5 @@ process.chdir(__dirname);
 
 
   // Start server
-  require('coffee-script');
   sails.lift(rc('sails'));
 })();

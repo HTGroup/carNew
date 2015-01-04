@@ -11,6 +11,9 @@ User =
     birthdate:
       type: "date"
 
+    avatar:
+      type: "date"
+
     email:
       type: "email"
       unique: true

@@ -21,7 +21,6 @@ AuthController =
       classpage: ["login-page login-form-fall loaded login-form-fall-init"]
       providers: providers
       errors: req.flash("error")
-
     return
 
   logout: (req, res) ->

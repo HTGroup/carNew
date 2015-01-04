@@ -1,0 +1,33 @@
+(function() {
+  var User;
+
+  User = {
+    schema: true,
+    connection: "someMongodbServer",
+    attributes: {
+      name: {
+        type: "string"
+      },
+      phone: {
+        type: "string"
+      },
+      birthdate: {
+        type: "date"
+      },
+      avatar: {
+        type: "date"
+      },
+      email: {
+        type: "email",
+        unique: true
+      },
+      passports: {
+        collection: "Passport",
+        via: "user"
+      }
+    }
+  };
+
+  module.exports = User;
+
+}).call(this);
