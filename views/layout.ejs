@@ -33,11 +33,20 @@
     <![endif]-->
   </head>
 
-  <body class="page-body <% if (typeof classpage != "undefined" && typeof classpage[0] != "undefined") { %><%- classpage[0] %><% } %>" data-url="http://neon.dev">
+  <body class="page-body <% if (typeof classpage != "undefined" && typeof classpage[0] != "undefined") { %><%- classpage[0] %><% } %>">
 
-    <div class="<% if (typeof classpage != "undefined" && typeof classpage[1] != "undefined") { %><%- classpage[1] %><% } else { %><%- 'page-container' %><% } %>">
+    <div class="page-container <% if (typeof classpage != "undefined" && typeof classpage[1] != "undefined") { %><%- classpage[1] %><% } %>">
+      
+      <%- include includes/navigation.ejs %>
 
-      <%- body %>
+      <div class="main-content">
+        <!-- Header Info -->
+        <%- include includes/header.ejs %>
+        <hr />
+        <%- body %>
+        <!-- Footer -->
+        <%- include includes/footer.ejs %>
+      </div>
 
     </div>
     <!--SCRIPTS-->

@@ -1,11 +1,15 @@
 
 SiteController =
     main: (req, res) ->
-        passport = require("passport")
-        console.log req.user, passport, req.session, res.locals.user, res.user
-        res.view()
+        res.locals.user
+        res.view
+            layout: false
         return
 
+    about: (req, res) ->
+        res.view
+            layout: false
+        return
 
 
 module.exports = SiteController

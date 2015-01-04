@@ -76,7 +76,7 @@ AuthController =
         delete req.body.password
         res.json
           login_status: 'success'
-          redirect_url: '/'
+          redirect_url: '/panel'
           submitted_data: req.body
         return
 
