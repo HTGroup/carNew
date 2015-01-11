@@ -126,17 +126,56 @@
         <div class="tab-content">
             <div class="tab-pane active" id="home">
 
-                <div class="scrollable" data-height="120">
+                  <div class="panel-body">
 
-                    <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
+                    <form role="form" class="form-horizontal form-groups-bordered">
 
-                    <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+                      <div class="form-group">
+                        <label for="field-1" class="col-sm-3 control-label"><%= __("Your name") %></label>
 
-                    <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                        </div>
+                      </div>
 
-                    <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
+                      <div class="form-group">
+                        <label for="field-1" class="col-sm-3 control-label"><%= __("Your phone") %></label>
 
-                </div>
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="field-1" class="col-sm-3 control-label"><%= __("Job") %></label>
+
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label">Select2</label>
+
+                        <div class="col-sm-5">
+
+                          <select name="test" class="select2" data-allow-clear="true" data-placeholder="Select one city...">
+                            <option></option>
+                            <optgroup label="United States">
+                              <option value="1">Alabama</option>
+                              <option value="2">Boston</option>
+                              <option value="3">Ohaio</option>
+                              <option value="4">New York</option>
+                              <option value="5">Washington</option>
+                            </optgroup>
+                          </select>
+
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
 
             </div>
             <div class="tab-pane" id="profile">

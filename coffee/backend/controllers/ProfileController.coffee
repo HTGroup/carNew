@@ -4,8 +4,11 @@ PanelController =
       styles: [
         "js/jvectormap/jquery-jvectormap-1.2.2.css"
         "js/rickshaw/rickshaw.min.css"
+        "js/select2/select2-bootstrap.css"
+        "js/select2/select2.css"
       ]
       scripts: [
+        "js/select2/select2.min.js"
         "js/jvectormap/jquery-jvectormap-europe-merc-en.js"
         "js/jquery.sparkline.min.js"
         "js/rickshaw/vendor/d3.v3.js"
