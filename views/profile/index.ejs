@@ -16,10 +16,10 @@
                 <li>
                     <div class="profile-name">
                         <strong>
-                            <a href="#">Art Ramadani</a>
+                            <a href="#"><%= user.name %></a>
                             <a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
-                            <!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						</strong>
-                        <span><a href="#">Co-Founder at Laborator</a></span>
+                            <!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->
+                        </strong>
                     </div>
                 </li>
 
@@ -69,14 +69,14 @@
                             Prishtina
                         </a>
                     </li>
-
+                  <% if(user.job != null){ %>
                     <li>
                         <a href="#">
                             <i class="entypo-suitcase"></i>
-                            Works as <span>Laborator</span>
+                            Works as <span><%= user.job %></span>
                         </a>
                     </li>
-
+                  <% } %>
                     <li>
                         <a href="#">
                             <i class="entypo-calendar"></i>
@@ -91,7 +91,7 @@
                     <li class="active">
                         <a href="#home" data-toggle="tab">
                             <span class="visible-xs"><i class="entypo-home"></i></span>
-                            <span class="hidden-xs">Home</span>
+                            <span class="hidden-xs"><%= __("Personal info") %></span>
                         </a>
                     </li>
                     <li>
@@ -127,54 +127,60 @@
             <div class="tab-pane active" id="home">
 
                   <div class="panel-body">
+                    <div class=" col-sm-10">
+                      <form role="form" class="form-horizontal form-groups-bordered">
 
-                    <form role="form" class="form-horizontal form-groups-bordered">
+                        <div class="form-group">
+                          <label for="field-1" class="col-sm-3 control-label"><%= __("Your name") %></label>
 
-                      <div class="form-group">
-                        <label for="field-1" class="col-sm-3 control-label"><%= __("Your name") %></label>
-
-                        <div class="col-sm-5">
-                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                          <div class="col-sm-5">
+                            <input value="<%= user.name %>" type="text" class="form-control" id="field-1" placeholder="<%= __("Your name") %>">
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="field-1" class="col-sm-3 control-label"><%= __("Your phone") %></label>
+                        <div class="form-group">
+                          <label for="field-1" class="col-sm-3 control-label"><%= __("Your phone") %></label>
 
-                        <div class="col-sm-5">
-                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                          <div class="col-sm-5">
+                            <input value="<%= user.phone %>" type="text" class="form-control" data-mask="phone" placeholder="<%= __("Your phone") %>">
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="field-1" class="col-sm-3 control-label"><%= __("Job") %></label>
+                        <div class="form-group">
+                          <label for="field-1" class="col-sm-3 control-label"><%= __("Job") %></label>
 
-                        <div class="col-sm-5">
-                          <input type="text" class="form-control" id="field-1" placeholder="Normal input">
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" id="field-1" placeholder="<%= __("Job") %>">
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label class="col-sm-3 control-label">Select2</label>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label"><%= __("City") %></label>
 
-                        <div class="col-sm-5">
+                          <div class="col-sm-5">
 
-                          <select name="test" class="select2" data-allow-clear="true" data-placeholder="Select one city...">
-                            <option></option>
-                            <optgroup label="United States">
-                              <option value="1">Alabama</option>
-                              <option value="2">Boston</option>
-                              <option value="3">Ohaio</option>
-                              <option value="4">New York</option>
-                              <option value="5">Washington</option>
-                            </optgroup>
-                          </select>
+                            <select name="test" class="select2" data-allow-clear="true" data-placeholder="Select one city...">
+                              <option></option>
+                              <optgroup label="United States">
+                                <option value="1">Alabama</option>
+                                <option value="2">Boston</option>
+                                <option value="3">Ohaio</option>
+                                <option value="4">New York</option>
+                                <option value="5">Washington</option>
+                              </optgroup>
+                            </select>
 
+                          </div>
                         </div>
-                      </div>
 
-                    </form>
-
+                      </form>
+                    </div>
+                    <div class="col-sm-2 form-profile-save">
+                      <button type="button" class="btn btn-default btn-icon icon-left" id="save_profile">
+                        <%= __("Save") %>
+                        <i class="entypo-shareable"></i>
+                      </button>
+                    </div>
                   </div>
 
             </div>

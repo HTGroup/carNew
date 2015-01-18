@@ -57,19 +57,6 @@ module.exports = function(grunt) {
                 files: ['coffee/backend/controllers/*.coffee', 'coffee/backend/models/*.coffee', 'coffee/backend/policies/*.coffee', 'coffee/frontend/site/*.coffee'],
                 tasks: ['newer:coffee:controllers','newer:coffee:models','newer:coffee:policies','newer:coffee:site']
             }
-        },
-        concat:{
-            dist:{
-                src:["assets/site/*.js"],
-                dest: 'assets/site/min/site.js'
-            }
-        },
-        uglify:{
-            dist:{
-                files:{
-                    'assets/site/min/site.min.js':['assets/site/min/site.js']
-                }
-            }
         }
     });
 
@@ -80,6 +67,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-forever');
     grunt.loadNpmTasks('grunt-newer');
 
-    grunt.registerTask('default', ['coffee:controllers','coffee:models','coffee:policies','coffee:site','concat','uglify', 'watch']);
+    grunt.registerTask('default', ['coffee:controllers','coffee:models','coffee:policies','coffee:site', 'watch']);
 
 };

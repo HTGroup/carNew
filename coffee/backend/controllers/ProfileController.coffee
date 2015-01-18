@@ -15,10 +15,14 @@ PanelController =
         "js/rickshaw/rickshaw.min.js"
         "js/raphael-min.js"
         "js/morris.min.js"
+        "js/jquery.inputmask.bundle.min.js"
         "js/toastr.js"
         "js/fullcalendar/fullcalendar.min.js"
         "js/neon-chat.js"
+        "site/profile_index.js"
       ]
+      user: res.locals.user
+    console.log res.locals.user
     return
   save: (req, res) ->
     return 1

@@ -4,6 +4,17 @@
  *
 */
 
-body {
-	
+.form-profile-save{
+  height: 55px;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  padding-right: 0;
+}
+.form-profile-save .btn{
+  height: 100%;
+  width: 100%;
+}
+.form-profile-save .entypo-shareable:before {
+  margin-top: 16px;
 }

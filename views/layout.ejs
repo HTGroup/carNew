@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="/css/neon-forms.css">
     <link rel="stylesheet" href="/css/custom.css">
     <!--STYLES END-->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
     <% if (typeof styles != "undefined") { %>
     <% for (i = 0; i < styles.length; i++) { %>
     <link rel="stylesheet" href="/<%- styles[i] %>">
@@ -36,7 +35,7 @@
   <body class="page-body <% if (typeof classpage != "undefined" && typeof classpage[0] != "undefined") { %><%- classpage[0] %><% } %>">
 
     <div class="page-container <% if (typeof classpage != "undefined" && typeof classpage[1] != "undefined") { %><%- classpage[1] %><% } %>">
-      
+
       <%- include includes/navigation.ejs %>
 
       <div class="main-content">
