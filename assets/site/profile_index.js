@@ -4,8 +4,8 @@
   $ = jQuery;
 
   $(function() {
-    return $("#save_profile").click(function() {
-      return console.log("save");
+    $("#save_profile").click(function() {
+      console.log($("form#form_profile").serialize());
     });
   });
 
