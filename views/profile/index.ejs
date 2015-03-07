@@ -1,221 +1,249 @@
 <div class="profile-env">
 
-    <header class="row">
+  <header class="row">
 
-        <div class="col-sm-2">
+    <div class="col-sm-2">
+        <label for="cropit-image-input" class="profile-picture">
+            <img src="/images/profile-picture.png" class="img-responsive img-circle" id="imgUser" />
+        </label>
 
-            <a href="#" class="profile-picture">
-                <img src="/images/profile-picture.png" class="img-responsive img-circle" />
+    </div>
+
+    <div class="col-sm-7">
+
+      <ul class="profile-info-sections">
+        <li>
+          <div class="profile-name">
+            <strong>
+              <a href="#"><%= user.name %></a>
+              <a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
+              <!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->
+            </strong>
+          </div>
+        </li>
+
+        <li>
+          <div class="profile-stat">
+            <h3>643</h3>
+            <span><a href="#">followers</a></span>
+          </div>
+        </li>
+
+        <li>
+          <div class="profile-stat">
+            <h3>108</h3>
+            <span><a href="#">following</a></span>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="col-sm-3">
+
+      <div class="profile-buttons">
+        <a href="#" class="btn btn-default">
+          <i class="entypo-user-add"></i>
+          Follow
+        </a>
+
+        <a href="#" class="btn btn-default">
+          <i class="entypo-mail"></i>
+        </a>
+      </div>
+    </div>
+
+  </header>
+
+  <section class="profile-info-tabs">
+
+    <div class="row">
+
+      <div class="col-sm-offset-2 col-sm-10">
+
+        <ul class="user-details">
+          <li>
+            <a href="#">
+              <i class="entypo-location"></i>
+              Prishtina
             </a>
+          </li>
+          <% if(user.job != null){ %>
+          <li>
+            <a href="#">
+              <i class="entypo-suitcase"></i>
+              Works as <span><%= user.job %></span>
+            </a>
+          </li>
+          <% } %>
+          <li>
+            <a href="#">
+              <i class="entypo-calendar"></i>
+              16 October
+            </a>
+          </li>
+        </ul>
 
+
+        <!-- tabs for the profile links -->
+        <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
+          <li class="active">
+            <a href="#home" data-toggle="tab">
+              <span class="visible-xs"><i class="entypo-home"></i></span>
+              <span class="hidden-xs"><%= __("Personal info") %></span>
+            </a>
+          </li>
+          <li>
+            <a href="#profile" data-toggle="tab">
+              <span class="visible-xs"><i class="entypo-user"></i></span>
+              <span class="hidden-xs">Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="#messages" data-toggle="tab">
+              <span class="visible-xs"><i class="entypo-mail"></i></span>
+              <span class="hidden-xs">Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="#settings" data-toggle="tab">
+              <span class="visible-xs"><i class="entypo-cog"></i></span>
+              <span class="hidden-xs">Settings</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="profile-feed">
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+
+        <div class="panel-body">
+          <div class=" col-sm-10">
+            <form id="form_profile" role="form" class="form-horizontal form-groups-bordered">
+
+              <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><%= __("Your name") %></label>
+
+                <div class="col-sm-5">
+                  <input value="<% if(user.name!=null) {%><%= user.name %><%}%>" name="name" type="text" class="form-control" id="field-1" placeholder="<%= __("Your name") %>">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="field-2" class="col-sm-3 control-label"><%= __("Your phone") %></label>
+
+                <div class="col-sm-5">
+                  <input value="<% if(user.phone!=null) {%><%= user.phone %><%}%>" name="phone" type="text" class="form-control" id="field-1" data-mask="phone" placeholder="<%= __("Your phone") %>">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="field-3" class="col-sm-3 control-label"><%= __("Job") %></label>
+
+                <div class="col-sm-5">
+                  <input value="<% if(user.job!=null) {%><%= user.job %><%}%>" type="text" name="job" class="form-control" id="field-3" placeholder="<%= __("Job") %>">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="field-4" class="col-sm-3 control-label"><%= __("City") %></label>
+
+                <div class="col-sm-5">
+
+                  <select name="city" class="select2" id="field-4" data-allow-clear="true" data-placeholder="Select one city...">
+                    <option></option>
+                    <optgroup label="United States">
+                      <option value="1">Alabama</option>
+                      <option value="2">Boston</option>
+                      <option value="3">Ohaio</option>
+                      <option value="4">New York</option>
+                      <option value="5">Washington</option>
+                    </optgroup>
+                  </select>
+
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col-sm-2 form-profile-save">
+            <button type="button" class="btn btn-default btn-icon icon-left" id="save_profile">
+              <%= __("Save") %>
+              <i class="entypo-shareable"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="col-sm-7">
+      </div>
+      <div class="tab-pane" id="profile">
 
-            <ul class="profile-info-sections">
-                <li>
-                    <div class="profile-name">
-                        <strong>
-                            <a href="#"><%= user.name %></a>
-                            <a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
-                            <!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->
-                        </strong>
-                    </div>
-                </li>
+        <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
 
-                <li>
-                    <div class="profile-stat">
-                        <h3>643</h3>
-                        <span><a href="#">followers</a></span>
-                    </div>
-                </li>
+        <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
 
-                <li>
-                    <div class="profile-stat">
-                        <h3>108</h3>
-                        <span><a href="#">following</a></span>
-                    </div>
-                </li>
-            </ul>
+        <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
 
+        <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
+
+      </div>
+      <div class="tab-pane" id="messages">
+
+        <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
+
+        <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
+
+        <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+
+        <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
+      </div>
+
+      <div class="tab-pane" id="settings">
+
+        <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
+
+        <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
+
+        <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+
+        <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal fade" id="modal-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title"><%= __("Resize Avatar") %></h4>
+      </div>
+
+      <div class="modal-body">
+        <div id="image-cropper">
+          <div class="cropit-image-preview-container">
+            <div class="cropit-image-preview"></div>
+          </div>
+
+          <div class="slider slider-blue" id="zoomCrop" data-min="0" data-max="1800" data-value="223"></div>
+
+          <input type="file" class="cropit-image-input" id="cropit-image-input" />
         </div>
+      </div>
 
-        <div class="col-sm-3">
-
-            <div class="profile-buttons">
-                <a href="#" class="btn btn-default">
-                    <i class="entypo-user-add"></i>
-                    Follow
-                </a>
-
-                <a href="#" class="btn btn-default">
-                    <i class="entypo-mail"></i>
-                </a>
-            </div>
-        </div>
-
-    </header>
-
-    <section class="profile-info-tabs">
-
-        <div class="row">
-
-            <div class="col-sm-offset-2 col-sm-10">
-
-                <ul class="user-details">
-                    <li>
-                        <a href="#">
-                            <i class="entypo-location"></i>
-                            Prishtina
-                        </a>
-                    </li>
-                  <% if(user.job != null){ %>
-                    <li>
-                        <a href="#">
-                            <i class="entypo-suitcase"></i>
-                            Works as <span><%= user.job %></span>
-                        </a>
-                    </li>
-                  <% } %>
-                    <li>
-                        <a href="#">
-                            <i class="entypo-calendar"></i>
-                            16 October
-                        </a>
-                    </li>
-                </ul>
-
-
-                <!-- tabs for the profile links -->
-                <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
-                    <li class="active">
-                        <a href="#home" data-toggle="tab">
-                            <span class="visible-xs"><i class="entypo-home"></i></span>
-                            <span class="hidden-xs"><%= __("Personal info") %></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#profile" data-toggle="tab">
-                            <span class="visible-xs"><i class="entypo-user"></i></span>
-                            <span class="hidden-xs">Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#messages" data-toggle="tab">
-                            <span class="visible-xs"><i class="entypo-mail"></i></span>
-                            <span class="hidden-xs">Messages</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#settings" data-toggle="tab">
-                            <span class="visible-xs"><i class="entypo-cog"></i></span>
-                            <span class="hidden-xs">Settings</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="profile-feed">
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-
-                  <div class="panel-body">
-                    <div class=" col-sm-10">
-                      <form id="form_profile" role="form" class="form-horizontal form-groups-bordered">
-
-                        <div class="form-group">
-                          <label for="field-1" class="col-sm-3 control-label"><%= __("Your name") %></label>
-
-                          <div class="col-sm-5">
-                            <input value="<% if(user.name!=null) {%><%= user.name %><%}%>" name="name" type="text" class="form-control" id="field-1" placeholder="<%= __("Your name") %>">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="field-2" class="col-sm-3 control-label"><%= __("Your phone") %></label>
-
-                          <div class="col-sm-5">
-                            <input value="<% if(user.phone!=null) {%><%= user.phone %><%}%>" name="phone" type="text" class="form-control" id="field-1" data-mask="phone" placeholder="<%= __("Your phone") %>">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="field-3" class="col-sm-3 control-label"><%= __("Job") %></label>
-
-                          <div class="col-sm-5">
-                            <input value="<% if(user.job!=null) {%><%= user.job %><%}%>" type="text" name="job" class="form-control" id="field-3" placeholder="<%= __("Job") %>">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="field-4" class="col-sm-3 control-label"><%= __("City") %></label>
-
-                          <div class="col-sm-5">
-
-                            <select name="city" class="select2" id="field-4" data-allow-clear="true" data-placeholder="Select one city...">
-                              <option></option>
-                              <optgroup label="United States">
-                                <option value="1">Alabama</option>
-                                <option value="2">Boston</option>
-                                <option value="3">Ohaio</option>
-                                <option value="4">New York</option>
-                                <option value="5">Washington</option>
-                              </optgroup>
-                            </select>
-
-                          </div>
-                        </div>
-
-                      </form>
-                    </div>
-                    <div class="col-sm-2 form-profile-save">
-                      <button type="button" class="btn btn-default btn-icon icon-left" id="save_profile">
-                        <%= __("Save") %>
-                        <i class="entypo-shareable"></i>
-                      </button>
-                    </div>
-                  </div>
-
-            </div>
-            <div class="tab-pane" id="profile">
-
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-
-                <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-
-                <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-            </div>
-            <div class="tab-pane" id="messages">
-
-                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-
-                <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-            </div>
-
-            <div class="tab-pane" id="settings">
-
-                <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-
-                <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-            </div>
-        </div>
-    </section>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" id="saveAvatar">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

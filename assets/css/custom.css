@@ -4,6 +4,10 @@
  *
 */
 
+
+/***
+**** Profile | User
+***/
 .form-profile-save{
   height: 55px;
   position: absolute;
@@ -17,4 +21,63 @@
 }
 .form-profile-save .entypo-shareable:before {
   margin-top: 16px;
+}
+#user_avatar{
+  display: none;
+}
+
+
+
+
+/***
+**** Croping Image
+***/
+
+.cropit-image-preview-container{
+  left: 50%;
+  margin: 15px -75px;
+}
+.cropit-image-preview {
+  background-color: #f8f8f8;
+  background-size: cover;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 7px;
+  width: 150px;
+  height: 150px;
+  cursor: move;
+}
+
+.cropit-image-background {
+  opacity: .2;
+  cursor: auto;
+}
+
+.image-size-label {
+  margin-top: 10px;
+}
+
+input {
+  display: block;
+}
+
+.export {
+  margin-top: 10px;
+}
+#cropit-image-input{
+  display: none;
+}
+#image-cropper .slider{
+  width: 200px;
+  left: 50%;
+  margin: 0 -100px;
+}
+
+
+
+/***
+**** Modal
+***/
+.modal{
+  overflow-x: hidden;
 }

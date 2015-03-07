@@ -1,5 +1,8 @@
 PanelController =
   index: (req, res) ->
+
+    res.redirect "/login" if not res.locals.user?
+
     res.view
       styles: [
         "js/jvectormap/jquery-jvectormap-1.2.2.css"
@@ -19,9 +22,12 @@ PanelController =
         "js/toastr.js"
         "js/fullcalendar/fullcalendar.min.js"
         "js/neon-chat.js"
+        "js/jquery.cropit.min.js"
         "site/profile_index.js"
       ]
       user: res.locals.user
+
+
     console.log res.locals.user
     return
   save: (req, res) ->

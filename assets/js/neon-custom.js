@@ -6,7 +6,7 @@
 
 var public_vars = public_vars || {};
 
-;(function($, window, undefined){
+(function($, window, undefined){
 
 	"use strict";
 
@@ -24,7 +24,7 @@ var public_vars = public_vars || {};
 		public_vars.$sidebarUser 	= public_vars.$sidebarUserEnv.find('.user-link');
 
 
-		public_vars.$body.addClass('loaded');
+		public_vars.$body.addClass('loaded').niceScroll();
 
 		// Just to make sure...
 		$(window).on('error', function(ev)
@@ -432,7 +432,7 @@ var public_vars = public_vars || {};
 
 
 		// Slider
-		if($.isFunction($.fn.slider))
+		/*if($.isFunction($.fn.slider))
 		{
 			$(".slider").each(function(i, el)
 			{
@@ -560,7 +560,7 @@ var public_vars = public_vars || {};
 				}
 
 			})
-		}
+		}*/
 
 
 

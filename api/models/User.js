@@ -15,7 +15,7 @@
         type: "date"
       },
       avatar: {
-        type: "date"
+        type: "string"
       },
       email: {
         type: "email",
