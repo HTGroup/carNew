@@ -1,7 +1,7 @@
 PanelController =
   index: (req, res) ->
 
-    res.redirect "/login" if not res.locals.user?
+    return res.redirect "/login" if not res.locals.user?
 
     res.view
       styles: [
@@ -31,7 +31,28 @@ PanelController =
     console.log res.locals.user
     return
   save: (req, res) ->
-    return 1
+    console.log(req.body)
+
+    fs = require("fs")
+    image = "/avatars/"+PanelController.makeid()+"_"+Date.now()+".jpg"
+    buff = new Buffer(req.body.image.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
+    fs.writeFile "./assets"+image, buff, (err)->
+      res.locals.user.avatar = image if res.locals.user?
+      console.log res.locals.user
+      res.json
+        error: err
+    return
+
+
+  makeid: ->
+    charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    randomString = ''
+    i = 0
+    while i < 5
+      randomPoz = Math.floor(Math.random() * charSet.length)
+      randomString += charSet.substring(randomPoz, randomPoz + 1)
+      i++
+    randomString
 
 
 

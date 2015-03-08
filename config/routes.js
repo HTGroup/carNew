@@ -9,7 +9,11 @@ module.exports.routes = {
   /* TODO Panel */
 
   'get /panel': 'PanelController.index',
+
+
+  /* TODO Profile */
   'get /profile': 'ProfileController.index',
+  'post /user/save/:type': 'ProfileController.save',
 
 
 

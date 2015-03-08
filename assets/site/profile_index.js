@@ -28,12 +28,24 @@
       }
     });
     $("#saveAvatar").on("click", function() {
-      $('#modal-1').modal('hide');
-      return $("#imgUser").prop("src", $imageCropper.cropit('export', {
+      var newImage;
+      newImage = $imageCropper.cropit('export', {
         type: 'image/jpeg',
-        quality: .9,
-        originalSize: true
-      }));
+        quality: .9
+      });
+      return $.ajax({
+        type: "POST",
+        url: "/user/save/avatar",
+        data: {
+          image: newImage
+        },
+        dataType: "json"
+      }).done(function(data) {
+        if ((data != null) && (data.error == null)) {
+          $("#imgUser").prop("src", newImage);
+          return $('#modal-1').modal('hide');
+        }
+      });
     });
   });
 
