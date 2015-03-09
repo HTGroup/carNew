@@ -31,13 +31,15 @@ PanelController =
     console.log res.locals.user
     return
   save: (req, res) ->
-    console.log(req.body)
-
     fs = require("fs")
     image = "/avatars/"+PanelController.makeid()+"_"+Date.now()+".jpg"
     buff = new Buffer(req.body.image.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
     fs.writeFile "./assets"+image, buff, (err)->
       res.locals.user.avatar = image if res.locals.user?
+      User.update { id: res.locals.user.id }, { avatar: image }, (err, user) ->
+        console.log err, user
+
+
       console.log res.locals.user
       res.json
         error: err

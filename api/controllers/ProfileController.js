@@ -15,7 +15,6 @@
     },
     save: function(req, res) {
       var buff, fs, image;
-      console.log(req.body);
       fs = require("fs");
       image = "/avatars/" + PanelController.makeid() + "_" + Date.now() + ".jpg";
       buff = new Buffer(req.body.image.replace(/^data:image\/(png|gif|jpeg);base64,/, ''), 'base64');
@@ -23,7 +22,7 @@
         if (res.locals.user != null) {
           res.locals.user.avatar = image;
         }
-        console.log(res.locals.user);
+        User.console.log(res.locals.user);
         return res.json({
           error: err
         });
