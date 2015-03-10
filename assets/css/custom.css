@@ -25,7 +25,25 @@
 #imgUser{
   cursor: pointer;
 }
-
+#save_profile{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#save_profile.btn-default .entypo-shareable{
+  display: block;
+}
+#save_profile.btn-success .entypo-check{
+  display: block;
+  padding: 20px 5px 0px 5px;
+}
+#save_profile.btn-default .entypo-check{
+  display: none;
+}
+#save_profile.btn-success .entypo-shareable{
+  display: none;
+}
 
 
 

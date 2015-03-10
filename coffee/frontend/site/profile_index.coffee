@@ -7,7 +7,11 @@ $ ->
       data: $( "#form_profile" ).serialize()
       dataType: "json"
     ).done (data)->
-      console.log(data)
+      $(document).find(".myName").text($("#field-1").val())
+      $("#save_profile").removeClass("btn-default").addClass("btn-success")
+      setTimeout ->
+        $("#save_profile").addClass("btn-default").removeClass("btn-success")
+      , 5000
     return
 
   slider = $("#zoomCrop").slider

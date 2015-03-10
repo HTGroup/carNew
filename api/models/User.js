@@ -20,6 +20,9 @@
       city: {
         type: "string"
       },
+      job: {
+        type: "string"
+      },
       email: {
         type: "email",
         unique: true

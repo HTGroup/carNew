@@ -52,7 +52,10 @@ PanelController =
                 error: err
             return
       when "profile"
-        console.log(req.body)
+        User.update { id: res.locals.user.id }, req.body, (err, user) ->
+          res.locals.user = PanelController.merge res.locals.user, req.body
+          res.json
+            error: err
       else
         return null
 
@@ -61,6 +64,11 @@ PanelController =
   reload: (res)->
     return res.redirect "/login" if not res.locals.user?
 
+  merge: (xs...) ->
+    if xs?.length > 0
+      PanelController.tap {}, (m) -> m[k] = v for k, v of x for x in xs
+
+  tap: (o, fn) -> fn(o); o
 
 
   makeid: ->

@@ -12,7 +12,11 @@
         data: $("#form_profile").serialize(),
         dataType: "json"
       }).done(function(data) {
-        return console.log(data);
+        $(document).find(".myName").text($("#field-1").val());
+        $("#save_profile").removeClass("btn-default").addClass("btn-success");
+        return setTimeout(function() {
+          return $("#save_profile").addClass("btn-default").removeClass("btn-success");
+        }, 5000);
       });
     });
     slider = $("#zoomCrop").slider({

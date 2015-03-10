@@ -1,5 +1,6 @@
 (function() {
-  var PanelController;
+  var PanelController,
+    __slice = [].slice;
 
   PanelController = {
     index: function(req, res) {
@@ -41,7 +42,14 @@
             }
           });
         case "profile":
-          return console.log(req.body);
+          return User.update({
+            id: res.locals.user.id
+          }, req.body, function(err, user) {
+            res.locals.user = PanelController.merge(res.locals.user, req.body);
+            return res.json({
+              error: err
+            });
+          });
         default:
           return null;
       }
@@ -50,6 +58,33 @@
       if (res.locals.user == null) {
         return res.redirect("/login");
       }
+    },
+    merge: function() {
+      var xs;
+      xs = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      if ((xs != null ? xs.length : void 0) > 0) {
+        return PanelController.tap({}, function(m) {
+          var k, v, x, _i, _len, _results;
+          _results = [];
+          for (_i = 0, _len = xs.length; _i < _len; _i++) {
+            x = xs[_i];
+            _results.push((function() {
+              var _results1;
+              _results1 = [];
+              for (k in x) {
+                v = x[k];
+                _results1.push(m[k] = v);
+              }
+              return _results1;
+            })());
+          }
+          return _results;
+        });
+      }
+    },
+    tap: function(o, fn) {
+      fn(o);
+      return o;
     },
     makeid: function() {
       var charSet, i, randomPoz, randomString;
