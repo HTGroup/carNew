@@ -4,18 +4,18 @@
   $ = jQuery;
 
   $(function() {
-    var $imageCropper;
+    var $imageCropper, slider;
     $("#save_profile").click(function() {
-      console.log($("form#form_profile").serialize());
+      $.ajax({
+        type: "POST",
+        url: "/user/save/profile",
+        data: $("#form_profile").serialize(),
+        dataType: "json"
+      }).done(function(data) {
+        return console.log(data);
+      });
     });
-    $("#cropit-image-input").on("change", function() {
-      return $('#modal-1').modal('show');
-    });
-    $imageCropper = $('#image-cropper').cropit({
-      imageBackground: true,
-      imageBackgroundBorderWidth: 15
-    });
-    $("#zoomCrop").slider({
+    slider = $("#zoomCrop").slider({
       orientation: 'horizontal',
       min: 1,
       max: 100,
@@ -26,6 +26,17 @@
       change: function(ev, ui) {
         $imageCropper.cropit('zoom', ui.value / 100);
       }
+    });
+    $("#cropit-image-input").on("change", function() {
+      $(".slider .ui-slider-handle").css("left", 0);
+      $('#modal-1').modal('show');
+    });
+    $('#modal-1').on('hidden.bs.modal', function() {
+      $("#cropit-image-input").val("");
+    });
+    $imageCropper = $('#image-cropper').cropit({
+      imageBackground: true,
+      imageBackgroundBorderWidth: 15
     });
     $("#saveAvatar").on("click", function() {
       var newImage;
@@ -42,7 +53,10 @@
         dataType: "json"
       }).done(function(data) {
         if ((data != null) && (data.error == null)) {
+          $("#saveAvatar").val("");
+          $("#cropit-image-input").val("");
           $("#imgUser").prop("src", newImage);
+          $("#my_avatar").prop("src", newImage);
           return $('#modal-1').modal('hide');
         }
       });

@@ -4,7 +4,7 @@
 
     <div class="col-sm-2">
         <label for="cropit-image-input" class="profile-picture">
-            <img src="/images/profile-picture.png" class="img-responsive img-circle" id="imgUser" />
+            <img src="<%= user.avatar %>" class="img-responsive img-circle" id="imgUser" />
         </label>
 
     </div>
@@ -62,12 +62,13 @@
       <div class="col-sm-offset-2 col-sm-10">
 
         <ul class="user-details">
+          <% if(user.city!=null) {%>
           <li>
             <a href="#">
-              <i class="entypo-location"></i>
-              Prishtina
+              <i class="entypo-location"></i><%= user.city %>
             </a>
           </li>
+          <%}%>
           <% if(user.job != null){ %>
           <li>
             <a href="#">
@@ -76,12 +77,6 @@
             </a>
           </li>
           <% } %>
-          <li>
-            <a href="#">
-              <i class="entypo-calendar"></i>
-              16 October
-            </a>
-          </li>
         </ul>
 
 
@@ -225,7 +220,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><%= __("Resize Avatar") %></h4>
+        <h4 class="modal-title"><%= __("Resize image for avatar user") %></h4>
       </div>
 
       <div class="modal-body">

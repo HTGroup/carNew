@@ -22,9 +22,11 @@
 .form-profile-save .entypo-shareable:before {
   margin-top: 16px;
 }
-#user_avatar{
-  display: none;
+#imgUser{
+  cursor: pointer;
 }
+
+
 
 
 

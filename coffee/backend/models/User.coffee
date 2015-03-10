@@ -14,6 +14,9 @@ User =
     avatar:
       type: "string"
 
+    city:
+      type: "string"
+
     email:
       type: "email"
       unique: true

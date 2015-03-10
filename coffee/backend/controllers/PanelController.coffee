@@ -1,5 +1,7 @@
 PanelController =
   index: (req, res) ->
+    return res.redirect "/login" if not res.locals.user?
+
     res.view
       styles: [
         "js/jvectormap/jquery-jvectormap-1.2.2.css"

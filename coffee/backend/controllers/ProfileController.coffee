@@ -1,7 +1,8 @@
 PanelController =
   index: (req, res) ->
 
-    return res.redirect "/login" if not res.locals.user?
+    PanelController.reload(res)
+
 
     res.view
       styles: [
@@ -31,19 +32,35 @@ PanelController =
     console.log res.locals.user
     return
   save: (req, res) ->
-    fs = require("fs")
-    image = "/avatars/"+PanelController.makeid()+"_"+Date.now()+".jpg"
-    buff = new Buffer(req.body.image.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
-    fs.writeFile "./assets"+image, buff, (err)->
-      res.locals.user.avatar = image if res.locals.user?
-      User.update { id: res.locals.user.id }, { avatar: image }, (err, user) ->
-        console.log err, user
+
+    PanelController.reload(res)
+
+    switch req.param("type")
+      when "avatar"
+        fs = require("fs")
+        image = "/avatars/"+PanelController.makeid()+"_"+Date.now()+".jpg"
+        buff = new Buffer(req.body.image.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
+        fs.writeFileSync "./assets"+image, buff
+        fs.writeFile "./.tmp/public"+image, buff, (err)->
+          res.locals.user.avatar = image if res.locals.user?
+          if err?
+            res.json
+              error: err
+          else
+            User.update { id: res.locals.user.id }, { avatar: image }, (err, user) ->
+              res.json
+                error: err
+            return
+      when "profile"
+        console.log(req.body)
+      else
+        return null
 
 
-      console.log res.locals.user
-      res.json
-        error: err
-    return
+
+  reload: (res)->
+    return res.redirect "/login" if not res.locals.user?
+
 
 
   makeid: ->
