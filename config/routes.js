@@ -16,6 +16,10 @@ module.exports.routes = {
   'post /user/save/:type': 'ProfileController.save',
 
 
+  /* TODO Insert */
+  'get /insert/makes': 'InsertController.makes',
+  'get /insert/models': 'InsertController.models',
+
 
   /* TODO Authorization / Register */
   'get /login': 'AuthController.login',

@@ -1,4 +1,3 @@
-
 SiteController =
     main: (req, res) ->
         res.locals.user
