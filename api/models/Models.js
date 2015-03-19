@@ -6,7 +6,7 @@
     connection: "someMongodbServer",
     attributes: {
       edmundsId: {
-        type: "integer"
+        type: "string"
       },
       name: {
         type: "string"
@@ -14,21 +14,16 @@
       niceName: {
         type: "string"
       },
-      modelName: {
-        type: "string"
-      },
-      body: {
-        type: "string"
-      },
-      trim: {
-        type: "string"
-      },
       years: {
-        type: "integer"
+        type: "array"
       },
       make: {
         model: 'Makes',
         required: true
+      },
+      confirmed: {
+        type: "integer",
+        defaultsTo: 0
       }
     }
   };

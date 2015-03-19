@@ -8,11 +8,20 @@ Styles =
     name:
       type: "string"
 
+    body:
+      type: "string"
+
+    modelName:
+      type: "string"
+
     niceName:
       type: "string"
 
-    years:
-      type: "array"
+    trim:
+      type: "string"
+
+    year:
+      type: "integer"
 
     model:
       model:'Models'

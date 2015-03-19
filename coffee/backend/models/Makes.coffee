@@ -18,5 +18,8 @@ Makes =
       collection: 'Models',
       via: 'make'
 
+    confirmed:
+      type: "integer"
+      defaultsTo: 0
 
 module.exports = Makes

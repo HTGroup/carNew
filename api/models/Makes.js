@@ -20,6 +20,10 @@
       models: {
         collection: 'Models',
         via: 'make'
+      },
+      confirmed: {
+        type: "integer",
+        defaultsTo: 0
       }
     }
   };
