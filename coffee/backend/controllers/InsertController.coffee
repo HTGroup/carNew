@@ -28,12 +28,24 @@ InsertController =
 
     models: (req, res) ->
       return 1;
-
       Makes.find().exec (err, makes)->
-        console.lo
         addModelsInterval(makes, 0)
 
       res.send(1)
+
+
+    stylesAddColor: (req, res) ->
+      return 1;
+      TrimsModel.find().limit(1).exec (err, styles)->
+        addParamStyle(styles, 0)
+
+    stylesAddParam: (req, res) ->
+
+      TrimsModel.find().exec (err, styles)->
+        addParamStyle(styles, 0)
+
+      res.send(1)
+
 
     spec: ()->
       # https://api.edmunds.com/api/vehicle/v2/styles/200477465/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3
@@ -44,6 +56,27 @@ InsertController =
 
 
 module.exports = InsertController
+
+
+addParamStyle = (style, styleKey)->
+  if styleKey >= 45368
+    return console.log("end")
+  console.log(styleKey+1, style[styleKey].name, style[styleKey].edmundsId)
+  request {
+    url: "https://api.edmunds.com/api/vehicle/v2/styles/"+style[styleKey].edmundsId+"?view=full&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3"
+    json: true
+  }, (error, response, body) ->
+    if !error and response.statusCode == 200
+      TrimsModel.update({id: style[styleKey].id},{transmission: body.transmission, engine: body.engine}, (err, trim)->
+        console.log(styleKey, err, style[styleKey].name)
+      )
+    setTimeout(->
+      addParamStyle(style, styleKey+1)
+    , 2000
+    )
+
+
+
 
 addModelsInterval = (make, keyMake)->
   if keyMake >= 61
@@ -80,12 +113,12 @@ addModelsInterval = (make, keyMake)->
         for key, model of data
           for st, style of styles[key]
             styles[key][st].model = model.id
-          Styles.create(styles[key]).exec (err, data)->
+          TrimsModel.create(styles[key]).exec (err, data)->
             #console.log(err, data)
         #console.log(key, model[key])
       setTimeout(->
         addModelsInterval(make, keyMake+1)
-      , 1500
+      , 2000
       )
 
 

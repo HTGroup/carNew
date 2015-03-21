@@ -1,5 +1,5 @@
 (function() {
-  var InsertController, addModelsInterval, request, unique;
+  var InsertController, addModelsInterval, addParamStyle, request, unique;
 
   request = require("request");
 
@@ -42,8 +42,19 @@
     models: function(req, res) {
       return 1;
       Makes.find().exec(function(err, makes) {
-        console.lo;
         return addModelsInterval(makes, 0);
+      });
+      return res.send(1);
+    },
+    stylesAddColor: function(req, res) {
+      return 1;
+      return TrimsModel.find().limit(1).exec(function(err, styles) {
+        return addParamStyle(styles, 0);
+      });
+    },
+    stylesAddParam: function(req, res) {
+      TrimsModel.find().exec(function(err, styles) {
+        return addParamStyle(styles, 0);
       });
       return res.send(1);
     },
@@ -51,6 +62,31 @@
   };
 
   module.exports = InsertController;
+
+  addParamStyle = function(style, styleKey) {
+    if (styleKey >= 45368) {
+      return console.log("end");
+    }
+    console.log(styleKey + 1, style[styleKey].name, style[styleKey].edmundsId);
+    return request({
+      url: "https://api.edmunds.com/api/vehicle/v2/styles/" + style[styleKey].edmundsId + "?view=full&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3",
+      json: true
+    }, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        TrimsModel.update({
+          id: style[styleKey].id
+        }, {
+          transmission: body.transmission,
+          engine: body.engine
+        }, function(err, trim) {
+          return console.log(styleKey, err, style[styleKey].name);
+        });
+      }
+      return setTimeout(function() {
+        return addParamStyle(style, styleKey + 1);
+      }, 2000);
+    });
+  };
 
   addModelsInterval = function(make, keyMake) {
     if (keyMake >= 61) {
@@ -102,13 +138,13 @@
               style = _ref2[st];
               styles[key][st].model = model.id;
             }
-            _results.push(Styles.create(styles[key]).exec(function(err, data) {}));
+            _results.push(TrimsModel.create(styles[key]).exec(function(err, data) {}));
           }
           return _results;
         });
         return setTimeout(function() {
           return addModelsInterval(make, keyMake + 1);
-        }, 1500);
+        }, 2000);
       }
     });
   };
