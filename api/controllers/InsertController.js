@@ -1,5 +1,5 @@
 (function() {
-  var InsertController, addModelsInterval, addParamStyle, request, unique;
+  var InsertController, addColorStyle, addModelsInterval, addParamStyle, request, unique;
 
   request = require("request");
 
@@ -47,13 +47,14 @@
       return res.send(1);
     },
     stylesAddColor: function(req, res) {
-      return 1;
-      return TrimsModel.find().limit(1).exec(function(err, styles) {
-        return addParamStyle(styles, 0);
+      TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
+        return addColorStyle(styles, 0);
       });
+      return res.send(1);
     },
     stylesAddParam: function(req, res) {
-      TrimsModel.find().exec(function(err, styles) {
+      return 1;
+      TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
         return addParamStyle(styles, 0);
       });
       return res.send(1);
@@ -84,6 +85,42 @@
       }
       return setTimeout(function() {
         return addParamStyle(style, styleKey + 1);
+      }, 2000);
+    });
+  };
+
+  addColorStyle = function(style, styleKey) {
+    if (styleKey >= 45368) {
+      return console.log("end");
+    }
+    return request({
+      url: "https://api.edmunds.com/api/vehicle/v2/styles/" + style[styleKey].edmundsId + "/colors?category=Exterior&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3",
+      json: true
+    }, function(error, response, body) {
+      var colors, key, val, _ref;
+      if (!error && response.statusCode === 200) {
+        colors = [];
+        if (body.colors.length) {
+          _ref = body.colors;
+          for (key in _ref) {
+            val = _ref[key];
+            colors.push({
+              name: val.name,
+              edmundsId: val.id,
+              color: val.colorChips != null ? val.colorChips.primary.hex : ""
+            });
+          }
+        }
+        TrimsModel.update({
+          id: style[styleKey].id
+        }, {
+          colors: colors
+        }, function(err, trim) {
+          return console.log(styleKey + 1, err, style[styleKey].name);
+        });
+      }
+      return setTimeout(function() {
+        return addColorStyle(style, styleKey + 1);
       }, 2000);
     });
   };

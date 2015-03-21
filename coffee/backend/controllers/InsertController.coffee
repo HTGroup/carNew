@@ -35,12 +35,13 @@ InsertController =
 
 
     stylesAddColor: (req, res) ->
-      return 1;
-      TrimsModel.find().limit(1).exec (err, styles)->
-        addParamStyle(styles, 0)
+      TrimsModel.find().sort("edmundsId").exec (err, styles)->
+        addColorStyle(styles, 0)
+
+      res.send(1)
 
     stylesAddParam: (req, res) ->
-
+      return 1;
       TrimsModel.find().sort("edmundsId").exec (err, styles)->
         addParamStyle(styles, 0)
 
@@ -72,6 +73,33 @@ addParamStyle = (style, styleKey)->
       )
     setTimeout(->
       addParamStyle(style, styleKey+1)
+    , 2000
+    )
+
+
+addColorStyle = (style, styleKey)->
+  if styleKey >= 45368
+    return console.log("end")
+  request {
+    url: "https://api.edmunds.com/api/vehicle/v2/styles/"+style[styleKey].edmundsId+"/colors?category=Exterior&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3"
+    json: true
+  }, (error, response, body) ->
+    if !error and response.statusCode == 200
+      colors = []
+
+      if(body.colors.length)
+        for key, val of body.colors
+          colors.push(
+            name: val.name
+            edmundsId: val.id
+            color: if val.colorChips? then val.colorChips.primary.hex else ""
+          )
+
+      TrimsModel.update({id: style[styleKey].id},{colors: colors}, (err, trim)->
+        console.log(styleKey+1, err, style[styleKey].name)
+      )
+    setTimeout(->
+      addColorStyle(style, styleKey+1)
     , 2000
     )
 
