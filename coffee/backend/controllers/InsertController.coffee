@@ -41,7 +41,7 @@ InsertController =
 
     stylesAddParam: (req, res) ->
 
-      TrimsModel.find().exec (err, styles)->
+      TrimsModel.find().sort("edmundsId").exec (err, styles)->
         addParamStyle(styles, 0)
 
       res.send(1)
