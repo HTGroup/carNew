@@ -53,7 +53,6 @@
       return res.send(1);
     },
     stylesAddParam: function(req, res) {
-      return 1;
       TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
         return addParamStyle(styles, 0);
       });
