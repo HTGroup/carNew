@@ -48,13 +48,41 @@
     },
     stylesAddColor: function(req, res) {
       TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
-        return addColorStyle(styles, 0);
+        return addColorStyle(styles, 3747);
       });
       return res.send(1);
     },
     stylesAddParam: function(req, res) {
+      return 1;
+      TrimsModel.destroy({
+        year: {
+          '>': '2014'
+        }
+      }).exec(function(err, styles) {
+        return console.log(23);
+      });
       TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
         return addParamStyle(styles, 0);
+      });
+      return res.send(1);
+    },
+    city: function(req, res) {
+      return 1;
+      Region.find().exec(function(err, r) {
+        var key, val, _results;
+        _results = [];
+        for (key in r) {
+          val = r[key];
+          console.log(val);
+          _results.push(City.update({
+            region_id: val.uid
+          }, {
+            region_id: val.id
+          }).exec(function(err, c) {
+            return console.log(c);
+          }));
+        }
+        return _results;
       });
       return res.send(1);
     },

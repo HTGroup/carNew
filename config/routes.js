@@ -21,6 +21,7 @@ module.exports.routes = {
   'get /insert/models': 'InsertController.models',
   'get /insert/addcolor': 'InsertController.stylesAddColor',
   'get /insert/addparam': 'InsertController.stylesAddParam',
+  'get /insert/city': 'InsertController.city',
 
 
   /* TODO Authorization / Register */

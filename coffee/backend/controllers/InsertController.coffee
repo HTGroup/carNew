@@ -36,13 +36,27 @@ InsertController =
 
     stylesAddColor: (req, res) ->
       TrimsModel.find().sort("edmundsId").exec (err, styles)->
-        addColorStyle(styles, 0)
+        addColorStyle(styles, 3747)
 
       res.send(1)
 
     stylesAddParam: (req, res) ->
+      return 1;
+      TrimsModel.destroy({ year: { '>': '2014' }}).exec (err, styles)->
+        console.log(23)
       TrimsModel.find().sort("edmundsId").exec (err, styles)->
         addParamStyle(styles, 0)
+
+      res.send(1)
+
+    city: (req, res)->
+      return 1;
+
+      Region.find().exec (err,r)->
+        for key, val of r
+          console.log(val)
+          City.update({region_id: val.uid}, {region_id: val.id}).exec (err,c)->
+            console.log(c)
 
       res.send(1)
 
