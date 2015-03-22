@@ -40734,13 +40734,13 @@ db.getCollection("system.indexes").insert({
 /** user records **/
 db.getCollection("user").insert({
   "_id": ObjectId("54a71d3c7c94cecc0fbd37cf"),
-  "name": "Ihor Hayduk",
+  "name": "Игорь Гайдук",
   "phone": "(093) 167-3185",
   "email": "cookkycok@gmail.com",
   "createdAt": ISODate("2015-01-02T22:35:40.260Z"),
-  "updatedAt": ISODate("2015-03-10T20:21:25.731Z"),
-  "avatar": "/avatars/BuC94_1426018524694.jpg",
-  "city": "2",
+  "updatedAt": ISODate("2015-03-22T16:32:33.815Z"),
+  "avatar": "/avatars/gwCOg_1427041079776.jpg",
+  "city": ObjectId("54ff57a351884f15bcc4219e"),
   "job": "DreamScape"
 });
 db.getCollection("user").insert({

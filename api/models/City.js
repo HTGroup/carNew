@@ -13,6 +13,10 @@
       },
       region_id: {
         model: 'Region'
+      },
+      users: {
+        collection: 'User',
+        via: 'city'
       }
     }
   };

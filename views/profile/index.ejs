@@ -65,7 +65,7 @@
           <% if(user.city!=null) {%>
           <li>
             <a href="#">
-              <i class="entypo-location"></i><%= user.city %>
+              <i class="entypo-location"></i><%= user.city.name %>
             </a>
           </li>
           <%}%>
@@ -152,18 +152,21 @@
                 <label for="field-4" class="col-sm-3 control-label"><%= __("City") %></label>
 
                 <div class="col-sm-5">
-
                   <select name="city" class="select2" id="field-4" data-allow-clear="true" data-placeholder="Select one city...">
-                    <option></option>
-                    <optgroup label="United States">
-                      <option value="1">Alabama</option>
-                      <option value="2" selected>Boston</option>
-                      <option value="3">Ohaio</option>
-                      <option value="4">New York</option>
-                      <option value="5">Washington</option>
+                    <%
+                     for(var i=0; i<region.length; i++){
+                       %>
+                    <optgroup label="<%= region[i].name %>">
+                      <%
+                       for(var cit=0; cit<region[i].cities.length; cit++){
+                         var city = region[i].cities[cit]; %>
+                        <option value="<%= city.id %>" <% if(city.id==user.city.id){%>selected="selected"<%}%> ><%= city.name %></option>
+                      <%
+                       }
+                      %>
                     </optgroup>
+                    <%}%>
                   </select>
-
                 </div>
               </div>
 

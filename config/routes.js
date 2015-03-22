@@ -11,6 +11,10 @@ module.exports.routes = {
   'get /panel': 'PanelController.index',
 
 
+  /* TODO Settings car */
+  'get /settings': 'CarController.settings',
+
+
   /* TODO Profile */
   'get /profile': 'ProfileController.index',
   'post /user/save/:type': 'ProfileController.save',

@@ -1,0 +1,62 @@
+<h4>Simple Form Wizard <small>- add class <strong>form-wizard</strong> to the form</small></h4>
+<hr />
+<br />
+
+<form id="rootwizard" method="post" action="" class="form-horizontal form-wizard">
+
+  <div class="steps-progress">
+    <div class="progress-indicator"></div>
+  </div>
+
+  <ul>
+    <li class="completed">
+      <a href="#tab1" data-toggle="tab"><span>1</span>First</a>
+    </li>
+    <li class="completed">
+      <a href="#tab2" data-toggle="tab"><span>2</span>Second</a>
+    </li>
+    <li class="completed">
+      <a href="#tab3" data-toggle="tab"><span>3</span>Third</a>
+    </li>
+    <li class="active">
+      <a href="#tab4" data-toggle="tab"><span>4</span>Forth</a>
+    </li>
+    <li>
+      <a href="#tab5" data-toggle="tab"><span>5</span>Fifth</a>
+    </li>
+    <li>
+      <a href="#tab6" data-toggle="tab"><span>6</span>Sixth</a>
+    </li>
+    <li>
+      <a href="#tab7" data-toggle="tab"><span>7</span>Seventh</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tab-pane" id="tab1">1</div>
+    <div class="tab-pane" id="tab2">2</div>
+    <div class="tab-pane" id="tab3">3</div>
+    <div class="tab-pane active" id="tab4">4</div>
+    <div class="tab-pane" id="tab5">5</div>
+    <div class="tab-pane" id="tab6">6</div>
+    <div class="tab-pane" id="tab7">7</div>
+
+    <ul class="pager wizard">
+      <li class="previous first">
+        <a href="#">First</a>
+      </li>
+      <li class="previous">
+        <a href="#"><i class="entypo-left-open"></i> Previous</a>
+      </li>
+
+      <li class="next last">
+        <a href="#">Last</a>
+      </li>
+      <li class="next">
+        <a href="#">Next <i class="entypo-right-open"></i></a>
+      </li>
+    </ul>
+
+  </div>
+</form>

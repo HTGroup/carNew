@@ -18,7 +18,7 @@
         type: "string"
       },
       city: {
-        type: "string"
+        model: 'City'
       },
       job: {
         type: "string"

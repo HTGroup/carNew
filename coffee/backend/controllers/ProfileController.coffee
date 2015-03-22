@@ -30,19 +30,16 @@ PanelController =
           "site/profile_index.js"
         ]
       region: (callback)->
-        Region.find().limit(1).populate('cities').exec (err,r)->
-          callback null, r
+        Region.find({sort: 'name ASC'}).populate('cities', {sort: 'name ASC'}).exec (err,r)->
+          callback err, r
 
     }, (err, results) ->
-      console.log(results)
       res.view
         styles: results.styles
         scripts: results.scripts
         user: res.locals.user
         region: results.region
 
-      return
-    return
   save: (req, res) ->
 
     PanelController.reload(res)

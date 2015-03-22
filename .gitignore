@@ -115,3 +115,6 @@ nbproject
 .tmp
 node_modules
 assets/avatars
+template
+
+db/mongo-car-trimsmodel-*

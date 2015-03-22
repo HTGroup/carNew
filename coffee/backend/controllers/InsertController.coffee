@@ -42,8 +42,9 @@ InsertController =
 
     stylesAddParam: (req, res) ->
       return 1;
-      TrimsModel.destroy({ year: { '>': '2014' }}).exec (err, styles)->
+      TrimsModel.destroy({ year: { '>': '2015' }}).exec (err, styles)->
         console.log(23)
+      return 1;
       TrimsModel.find().sort("edmundsId").exec (err, styles)->
         addParamStyle(styles, 0)
 
@@ -93,6 +94,7 @@ addParamStyle = (style, styleKey)->
 addColorStyle = (style, styleKey)->
   if styleKey >= 45368
     return console.log("end")
+  console.log(style[styleKey])
   request {
     url: "https://api.edmunds.com/api/vehicle/v2/styles/"+style[styleKey].edmundsId+"/colors?category=Exterior&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3"
     json: true

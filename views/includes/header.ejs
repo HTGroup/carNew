@@ -9,8 +9,10 @@
             <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="<%if(user != null && user.avatar != null){%><%= user.avatar %><%}%>" alt="<%if(user != null && user.name != null){%><%= user.name %><%}%>" class="img-circle" id="my_avatar" width="44" />
+                  <%if(user != null && user.avatar != null){%>
+                    <img src="<%= user.avatar %>" alt="<%= user.name %>" class="img-circle" id="my_avatar" width="44" />
                     <span class="myName"><%= user.name %></span>
+                  <%}%>
                 </a>
 
                 <ul class="dropdown-menu">

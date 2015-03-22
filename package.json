@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "async": "^0.9.0",
     "bcryptjs": "^2.1.0",
     "bson": "^0.2.20",
     "coffee-script": "^1.9.1",
