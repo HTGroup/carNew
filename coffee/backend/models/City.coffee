@@ -1,18 +1,15 @@
 City =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
-    uid:
-      type: "integer"
-
     name:
       type: "string"
 
+    users:
+      collection: "User"
+      via: "city"
+
     region_id:
       model:'Region'
-
-    users:
-      collection: 'User',
-      via: 'city'
 
 module.exports = City

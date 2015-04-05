@@ -20,8 +20,8 @@ InsertController =
             delete makes[key].id
             console.log makes
         # Print the json response
-          ###Makes.create(makes).exec (data)->
-            console.log(data)###
+          Makes.create(makes).exec (data)->
+            console.log(data)
         return
       res.json(1)
       return
@@ -35,8 +35,9 @@ InsertController =
 
 
     stylesAddColor: (req, res) ->
-      TrimsModel.find().sort("edmundsId").exec (err, styles)->
-        addColorStyle(styles, 3747)
+      return 1;
+      TrimsModel.find().exec (err, styles)->
+        addColorStyle(styles, 0)
 
       res.send(1)
 
@@ -94,7 +95,6 @@ addParamStyle = (style, styleKey)->
 addColorStyle = (style, styleKey)->
   if styleKey >= 45368
     return console.log("end")
-  console.log(style[styleKey])
   request {
     url: "https://api.edmunds.com/api/vehicle/v2/styles/"+style[styleKey].edmundsId+"/colors?category=Exterior&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3"
     json: true
@@ -150,14 +150,14 @@ addModelsInterval = (make, keyMake)->
             })
         model[key].years = unique(years)
         model[key].edmundsId = model[key].id
-        model[key].make = make[keyMake].id
+        model[key].makes = make[keyMake].id
         delete model[key].id
       Models.create(model).exec (err, data)->
         for key, model of data
           for st, style of styles[key]
-            styles[key][st].model = model.id
+            styles[key][st].models = model.id
           TrimsModel.create(styles[key]).exec (err, data)->
-            #console.log(err, data)
+            console.log("TrimsModel", err)
         #console.log(key, model[key])
       setTimeout(->
         addModelsInterval(make, keyMake+1)

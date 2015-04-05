@@ -1,6 +1,6 @@
 Makes =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
     edmundsId:
       type: "integer"
@@ -15,8 +15,8 @@ Makes =
       type: "array"
 
     models:
-      collection: 'Models',
-      via: 'make'
+      collection: "Models"
+      via: "makes"
 
     confirmed:
       type: "integer"

@@ -3,7 +3,7 @@
 
   Makes = {
     schema: true,
-    connection: "someMongodbServer",
+    connection: "someMysqlServer",
     attributes: {
       edmundsId: {
         type: "integer"
@@ -18,8 +18,8 @@
         type: "array"
       },
       models: {
-        collection: 'Models',
-        via: 'make'
+        collection: "Models",
+        via: "makes"
       },
       confirmed: {
         type: "integer",

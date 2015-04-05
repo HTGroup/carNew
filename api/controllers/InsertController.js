@@ -31,10 +31,9 @@
             delete makes[key].id;
             console.log(makes);
           }
-
-          /*Makes.create(makes).exec (data)->
-            console.log(data)
-           */
+          Makes.create(makes).exec(function(data) {
+            return console.log(data);
+          });
         }
       });
       res.json(1);
@@ -47,8 +46,9 @@
       return res.send(1);
     },
     stylesAddColor: function(req, res) {
-      TrimsModel.find().sort("edmundsId").exec(function(err, styles) {
-        return addColorStyle(styles, 3747);
+      return 1;
+      TrimsModel.find().exec(function(err, styles) {
+        return addColorStyle(styles, 0);
       });
       return res.send(1);
     },
@@ -121,7 +121,6 @@
     if (styleKey >= 45368) {
       return console.log("end");
     }
-    console.log(style[styleKey]);
     return request({
       url: "https://api.edmunds.com/api/vehicle/v2/styles/" + style[styleKey].edmundsId + "/colors?category=Exterior&fmt=json&api_key=zsx3jzwjkk9ke7zq4ze9mjp3",
       json: true
@@ -191,7 +190,7 @@
           }
           model[key].years = unique(years);
           model[key].edmundsId = model[key].id;
-          model[key].make = make[keyMake].id;
+          model[key].makes = make[keyMake].id;
           delete model[key].id;
         }
         Models.create(model).exec(function(err, data) {
@@ -202,9 +201,11 @@
             _ref2 = styles[key];
             for (st in _ref2) {
               style = _ref2[st];
-              styles[key][st].model = model.id;
+              styles[key][st].models = model.id;
             }
-            _results.push(TrimsModel.create(styles[key]).exec(function(err, data) {}));
+            _results.push(TrimsModel.create(styles[key]).exec(function(err, data) {
+              return console.log("TrimsModel", err);
+            }));
           }
           return _results;
         });

@@ -4,7 +4,9 @@
 
     <div class="col-sm-2">
         <label for="cropit-image-input" class="profile-picture">
+          <%if(user != null){%>
             <img src="<%= user.avatar %>" class="img-responsive img-circle" id="imgUser" />
+          <%}%>
         </label>
 
     </div>
@@ -159,8 +161,9 @@
                     <optgroup label="<%= region[i].name %>">
                       <%
                        for(var cit=0; cit<region[i].cities.length; cit++){
-                         var city = region[i].cities[cit]; %>
-                        <option value="<%= city.id %>" <% if(city.id==user.city.id){%>selected="selected"<%}%> ><%= city.name %></option>
+                         var city = region[i].cities[cit];
+                      %>
+                        <option value="<%= city.id %>" <% if(user.city!=null && city.id==user.city.id){%>selected="selected"<%}%> ><%= city.name %></option>
                       <%
                        }
                       %>

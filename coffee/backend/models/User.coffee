@@ -1,6 +1,6 @@
 User =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
     name:
       type: "string"

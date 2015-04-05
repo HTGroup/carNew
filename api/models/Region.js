@@ -3,11 +3,8 @@
 
   Region = {
     schema: true,
-    connection: "someMongodbServer",
+    connection: "someMysqlServer",
     attributes: {
-      uid: {
-        type: "integer"
-      },
       name: {
         type: "string"
       },

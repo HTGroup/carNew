@@ -1,6 +1,6 @@
 TrimsModel =
   schema: false
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
     edmundsId:
       type: "integer"
@@ -24,7 +24,7 @@ TrimsModel =
       type: "integer"
 
     colors:
-      type: "array"
+      type: "json"
 
     transmission:
       type: "json"
@@ -32,8 +32,7 @@ TrimsModel =
     engine:
       type: "json"
 
-    model:
-      model:'Models'
-      required: true
+    models:
+      model: "Models"
 
 module.exports = TrimsModel

@@ -1,6 +1,6 @@
 Models =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
     edmundsId:
       type: "string"
@@ -14,9 +14,12 @@ Models =
     years:
       type: "array"
 
-    make:
-      model:'Makes'
-      required: true
+    makes:
+      model: "Makes"
+
+    trims:
+      collection: "TrimsModel"
+      via: "models"
 
     confirmed:
       type: "integer"

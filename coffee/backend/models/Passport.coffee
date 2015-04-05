@@ -12,7 +12,7 @@ bcrypt = require("bcryptjs")
 
 Passport =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
 
     protocol:

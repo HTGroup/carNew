@@ -1,15 +1,12 @@
 Region =
   schema: true
-  connection: "someMongodbServer"
+  connection: "someMysqlServer"
   attributes:
-    uid:
-      type: "integer"
-
     name:
       type: "string"
 
     cities:
-      collection: 'City',
+      collection: 'City'
       via: 'region_id'
 
 module.exports = Region
